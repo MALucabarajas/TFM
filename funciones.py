@@ -38,7 +38,11 @@ def pathways_Uniprot(protein):
     entry = protein
     x = U.search(query = protein+"+"+org+"+"+rev, columns="id,entry name,genes")
     if x == 400:
-        return("No results found in UniProt")
+        print("No results found in UniProt")
+        return
+    if not x:
+        print("No results found in UniProt")
+        return        
     x = x.split("\n")
     for i in x:
         if re.search("Entry",i):
